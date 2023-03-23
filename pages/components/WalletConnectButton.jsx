@@ -2,7 +2,7 @@
 import Image from 'next/image'
 
 import { Web3Button, useWeb3Modal } from '@web3modal/react'
-
+import { useState } from 'react'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 
 import {
@@ -16,15 +16,21 @@ import {
 
 export default function WalletButton() {
   const { isOpen, open, close, setDefaultChain } = useWeb3Modal()
+  let [clicked, setClicked] = useState(false)
   return (
     <button
       // onClick={() => open()}
+      onClick={() => {
+        setClicked(true)
+      }}
       className="flex h-[6vh] md:w-[11.5vw] w-[16vh] relative"
     >
       <Image src="/ConnectWalletBottom.svg" fill />
       <Image className='-translate-x-1 -translate-y-1 
                         hover:-translate-x-2 hover:-translate-y-2 
-                        active:translate-x-0 active:translate-y-0' src="/ConnectWalletTop.svg" fill />
+                        active:translate-x-0 active:translate-y-0' src={
+          clicked ? "/ComingSoon.svg" : "/ConnectWalletTop.svg"
+        } fill />
     </button>
   )
 }

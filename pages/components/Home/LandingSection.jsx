@@ -6,8 +6,7 @@ import UserNfts from '../UserNfts'
 import ExploreDealsButton from '../ExploreDealsButton'
 import { useEffect, useState } from 'react'
 import Profile from '../Profile'
-export default function LandingSection({user, setUser, setUserNFTcollection,}) {
-  const [scale, setScale] = useState(0)
+export default function LandingSection({ user, setUser, setUserNFTcollection, }) {
   const { address, isConnected } = useAccount('')
   // const [address , setAddress] = useState('0x7A02A9b9A7Ce979cFEB7456D40B6c8b3C3d6E98B')
   // const [isConnected , setIsConnected] = useState(true)
@@ -47,11 +46,7 @@ export default function LandingSection({user, setUser, setUserNFTcollection,}) {
             </p>
             <div className="flex flex-col md:flex-row items-center gap-5 mt-5 md:m-0">
               <div className="">
-                <ExploreDealsButton 
-                  setScale={setScale}
-                  scale={scale}
-                />
-                <Profile scale={scale} />
+                <ExploreDealsButton/>
               </div>
               <div className="h-[7vmax] w-[7vmax] relative ">
                 <Image
