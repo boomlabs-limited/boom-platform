@@ -68,7 +68,7 @@ export default function Home({
           setUserNFTcollection={setUserNFTcollection}
         />
         <HowToCoupons />
-        <CouponSection userNFTcollection={userNFTcollection} />
+        {/* <CouponSection userNFTcollection={userNFTcollection} /> */}
         <SupportedNfts />
         <Footer />
       </div>

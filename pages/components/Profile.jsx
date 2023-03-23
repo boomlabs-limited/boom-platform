@@ -9,7 +9,7 @@ export default function Profile({
     return (
         <div className={`rounded-lg flex flex-col gap-y-2 
                         border-2 border-black z-50 absolute
-                         bg-white w-[20vh] md:w-[10vw] p-5 overflow-auto
+                         bg-white md:w-[11.5vw] w-[16vh] p-5 overflow-auto
                          items-start font-[500] text-lg origin-top
             ${scale === 0 ? 'scale-0' : ' animate-grow'
             } 
@@ -18,18 +18,7 @@ export default function Profile({
             e.stopPropagation()
         }}
         >
-            <p>Address</p>
-            <p className="break-all text-sm">{address}</p>
-            <p>Email</p>
-            <p>{email}</p>
-            <button
-                onClick={() => {
-                    open()
-                }}
-
-            >
-                <p className="text-start underline">Manage Wallet</p>
-            </button>
+            <p>Coming Soon</p>
         </div>
     )
 }

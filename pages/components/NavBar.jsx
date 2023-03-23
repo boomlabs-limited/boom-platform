@@ -40,7 +40,18 @@ export default function NavBar({ user, scale, setScale }) {
                                     <Profile scale={scale} address={address} />
                                 </div>
                             </div>
-                        ) : <WalletButton />
+                        ) : <div className='flex flex-col'>
+                            <div onClick={
+                                () => {
+                                    setScale(scale === 0 ? 1 : 0)
+                                }
+                            }>
+                                <WalletButton />
+                            </div>
+                            <div>
+                                <Profile scale={scale} address={address} />
+                            </div>
+                        </div>
                     }
                 </div>
 
