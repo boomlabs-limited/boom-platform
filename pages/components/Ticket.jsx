@@ -10,15 +10,15 @@ export default function Ticket({ className, bg }) {
                     <div className="flex items-center justify-center h-full">
                         <div className="flex flex-col items-center justify-between py-[1.25vmax] pl-[2vmax] h-full ">
                             <div className='w-[2vmax] h-[2vmax] relative'>
-                                <Image src="/ticketlogo10.png" alt="logo" fill sizes='2vmax' className="mr-8" />
+                                <Image src="/ticketlogo10.svg" alt="logo" fill sizes='2vmax' className="mr-8" />
                             </div>
                             <div className='w-[2vmax] h-[2vmax] relative'>
-                                <Image src="/ticketlogo2.png" alt="logo" fill sizes='2vmax' className="mr-8" />
+                                <Image src="/ticketlogo2.svg" alt="logo" fill sizes='2vmax' className="mr-8" />
                             </div>
                         </div>
                         <div className="flex flex-col justify-center px-[1vmax] h-full overflow-hidden ">
-                            <p className="text-[2vmax] font-bold leading-tight md:text-[1.4vmax]">90% OFF</p>
-                            <p className="text-[0.7vmax] font-medium leading-tight">Get off on the whole company. We are going bankrupt beca.....</p>
+                            <p className="text-[2vmax] font-bold leading-tight md:text-[1.4vmax]">20% OFF</p>
+                            <p className="text-[0.7vmax] font-medium leading-tight">20% off on all creators subscription on YouTube if you are VeeFriends holder.</p>
                         </div>
                         <div className="flex flex-col items-center justify-end py-[1vmax] pr-[2.5vmax] h-full">
                             <p className="text-[0.7vmax] font-medium md:text-xm">3254</p>
