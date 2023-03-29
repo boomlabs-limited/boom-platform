@@ -12,7 +12,10 @@ const nextConfig = {
         hostname: '**',
       }
     ],
+    loader: 'akamai',
+    path: '',
   },
+  trailingSlash: true,
 }
 
 module.exports = nextConfig
