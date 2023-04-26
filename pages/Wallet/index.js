@@ -41,11 +41,12 @@ async function getNFTs() {
   }
 }
 
-export default function Wallet({walletAddress}) {
+export default function Wallet({ walletAddress }) {
   const { address, isConnected } = useAccount('')
   // const [address , setAddress] = useState('0x7A02A9b9A7Ce979cFEB7456D40B6c8b3C3d6E98B')
   // const [isConnected , setIsConnected] = useState(true)
   const [email, setEmail] = useState('')
+  const [skipEmail, setSkipEmail] = useState('skip-email-verification@boom.fan')
 
   return (
     <>
@@ -58,9 +59,7 @@ export default function Wallet({walletAddress}) {
       <div className="flex flex-1 flex-row justify-evenly ">
         <div className="flex flex-col flex-1 pt-24 pl-36">
           <div>
-            <p
-              className={`font-display text-8xl pt-24`}
-            >
+            <p className={`font-display text-8xl pt-24`}>
               Wallet
               <br />
               Connected
@@ -88,21 +87,76 @@ export default function Wallet({walletAddress}) {
               To get the best coupons the faster than others, <br />
               let us mail you on your email address.
             </p>
-            <div className="flex flex-col mt-5 font-semibold">
+            <div className="flex flex-col mt-5 font-semibold border-2 gap-2">
               <p className="text-lg">Email address</p>
-              <div className="flex flex-row gap-x-3 ">
-                <input className="border-2 border-black rounded-lg" 
+              <div className="flex gap-x-3  border-2 ">
+                <input
+                  className="border-2 border-black rounded-lg w-[14vw] h-[4vh] px-1"
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <button className="border-2 border-black rounded-lg w-24 text-center hover:bg-boom-yellow"
+              </div>
+              {/* <button
+                  className="border-2 border-black rounded-lg w-24 text-center hover:bg-boom-yellow"
                   onClick={() => {
-                    addEmailToWallet({email, address}).then((data) => {
-                      Router.push('/Verify?email='+email+'&address='+address, '/Verify',)
+                    addEmailToWallet({ email, address }).then((data) => {
+                      Router.push(
+                        '/Verify?email=' + email + '&address=' + address,
+                        '/Verify',
+                        )
+                      })
+                    }}
+                    >
+                    Verify
+                  </button> */}
+              {/* <button
+                  className="border-2 border-black rounded-lg w-24 text-center hover:bg-boom-yellow"
+                  onClick={() => {
+                    skipEmailVerification({ email: skipEmail, address }).then((data) => {
+                      Router.push('/', '/')
                     })
-
                   }}
+                  >
+                  Skip
+                </button> */}
+              <div className="flex mt-2 gap-[1vw]">
+                <button
+                  onClick={() => {
+                    addEmailToWallet({ email, address }).then((data) => {
+                      Router.push(
+                        '/Verify?email=' + email + '&address=' + address,
+                        '/Verify',
+                      )
+                    })
+                  }}
+                  className="flex h-[4vh] md:w-[6vw] w-[16vh] relative"
                 >
-                  Verify
+                  <Image src="/Wallet/VerifyBottom.svg" fill />
+                  <Image
+                    className="-translate-x-1 -translate-y-1 
+                        hover:-translate-x-2 hover:-translate-y-2 
+                        active:translate-x-0 active:translate-y-0"
+                    src="/Wallet/VerifyTop.svg"
+                    fill
+                  />
+                </button>
+                <button
+                  onClick={() => {
+                    skipEmailVerification({ email: skipEmail, address }).then(
+                      (data) => {
+                        Router.push('/', '/')
+                      },
+                    )
+                  }}
+                  className="flex h-[4vh] md:w-[7vw] w-[16vh] relative"
+                >
+                  <Image src="/Wallet/SkipBottom.svg" fill />
+                  <Image
+                    className="-translate-x-1 -translate-y-1 
+                        hover:-translate-x-2 hover:-translate-y-2 
+                        active:translate-x-0 active:translate-y-0"
+                    src="/Wallet/SkipTop.svg"
+                    fill
+                  />
                 </button>
               </div>
             </div>
@@ -121,15 +175,14 @@ export default function Wallet({walletAddress}) {
   )
 }
 
-
-async function addEmailToWallet({address,email}){
+async function addEmailToWallet({ address, email }) {
   let text = 'Your OTP is: '
   let response = await fetch('/api/sendOTPtoEmail', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({email, text}),
+    body: JSON.stringify({ email, text }),
   })
   let data = await response.json()
   alert(data.message)
@@ -138,9 +191,22 @@ async function addEmailToWallet({address,email}){
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({address,email}),
+    body: JSON.stringify({ address, email }),
   })
   data = await response.json()
+  console.log(data)
+  return data
+}
+
+async function skipEmailVerification({ address, email }) {
+  let response = await fetch('/api/skipEmail', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ address, email }),
+  })
+  let data = await response.json()
   console.log(data)
   return data
 }

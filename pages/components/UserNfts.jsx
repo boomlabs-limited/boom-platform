@@ -20,10 +20,10 @@ async function getNFTs({ walletAddress, setUserNFTcollection }) {
 
 
     try {
-        var arrayOfNFTimages = ['https://duskbreakers.gg/breaker_images/9.png', 
-                                'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDov…iMTYwIiBjbGFzcz0iYmFzZSI+SHlwZXI8L3RleHQ+PC9zdmc+', 
-                                'https://ipfs.io/ipfs/bafybeihe67vtt35ylkmylsze5bwmofthonfnvrl6oinqd65d577nhomjdq', 
-                                'ipfs://QmZkkoNaKp6PMv6wwy5YqsHvk3EkigUMvhgrmo3SaohZbP/1546.png']
+        var arrayOfNFTimages = ['https://duskbreakers.gg/breaker_images/9.png',
+        'https://ipfs.io/ipfs/bafybeihe67vtt35ylkmylsze5bwmofthonfnvrl6oinqd65d577nhomjdq',
+        'https://duskbreakers.gg/breaker_images/8.png',
+            'https://ipfs.io/ipfs/QmZkkoNaKp6PMv6wwy5YqsHvk3EkigUMvhgrmo3SaohZbP/1546.png']
         var arrayOfNFTcontractAddresses = [
             "0xB2D8b42A16f1C45eE5bAA205A197c1C958A8895D",
             "0x8bD03aBBDdfE8ec4aB52763a6f9c4ebC14b1fF6",
@@ -70,7 +70,7 @@ export default function UserNfts({ walletAddress, setUserNFTcollection }) {
                 {
                     nfts.map((nft, index) => {
                         return (
-                            <div key={index} className='relative h-[3vw] w-[3vw]'>
+                            <div key={index} className='relative h-[3vw] w-[3vw] mr-1 rounded-lg border-4 border-black'>
                                 <Image src={nft} fill />
                             </div>
                         )
