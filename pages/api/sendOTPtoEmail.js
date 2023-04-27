@@ -3,10 +3,10 @@ import clientPromise from '@/lib/mongodb'
 
 const nodemailer = require('nodemailer')
 const {google} = require('googleapis')
-const clientID = '97100006618-r1ogtino4b4tto5j8forc1i4tdh0p8dp.apps.googleusercontent.com'
-const clientSecret = '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'
+const clientID = process.env.GOOGLE_CLIENT_ID
+const clientSecret = process.env.GOOGLE_CLIENT_SECRET
 const redirectURI = 'https://developers.google.com/oauthplayground'
-const refreshToken = '1//04AIHNqfXT01bCgYIARAAGAQSNwF-L9Ir29c5bm-N3xbtKHdlY4hulMCuuNl3T_-XwKaMlK5WQ6XSO6CeHNXNknHlu1GPTNLyAkI'
+const refreshToken = process.env.GOOGLE_REFRESH_TOKEN
 
 const oAuth2Client = new google.auth.OAuth2(clientID, clientSecret, redirectURI)
 oAuth2Client.setCredentials({refresh_token: refreshToken})  
@@ -19,7 +19,7 @@ export default async function handler(req, res) {
       service: 'gmail',
       auth: {
         type: 'OAuth2',
-        user: 'recipedia.cosylab.iiit@gmail.com',
+        user: 'boomfan3000@gmail.com',
         clientId: clientID,
         clientSecret: clientSecret,
         refreshToken: refreshToken,
@@ -34,7 +34,7 @@ export default async function handler(req, res) {
     let response = await addOTPtoDatabase(email, rand)
 
     const mailData = {
-      from: 'A Recipe a day 🍝 <recipedia.cosylab.iiit@gmail.com>',
+      from: 'Boom Fan 👋 <boomfan3000@gmail.com>',
       to: email,
       subject: 'Email Verification for Boom',
       text: text,

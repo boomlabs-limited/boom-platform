@@ -47,7 +47,7 @@ export default function Verify() {
 
 
 async function checkOTP({otp, email, address}){
-  alert(address)
+  // alert(address)
     const res = await fetch('/api/emailOTP', {
         method: 'POST',
         headers: {

@@ -176,6 +176,7 @@ export default function Wallet({ walletAddress }) {
 }
 
 async function addEmailToWallet({ address, email }) {
+  alert('Sending OTP to your email address! Please wait...')
   let text = 'Your OTP is: '
   let response = await fetch('/api/sendOTPtoEmail', {
     method: 'POST',
